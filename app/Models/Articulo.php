@@ -10,9 +10,19 @@ class Articulo extends Model
     use HasFactory;
 
 
-    public function articulos()
+    public function monografias()
     {
-        return $this->belongsToMany(Articulo::class);
+        return $this->belongsToMany(Monografia::class);
+    }
+
+    /**
+     * The roles that belong to the Articulo
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function autores()
+    {
+        return $this->belongsToMany(Autor::class);
     }
 
 }

@@ -14,4 +14,6 @@ class Autor extends Model
     {
         return $this->belongsToMany(Articulo::class);
     }
+
+    
 }
