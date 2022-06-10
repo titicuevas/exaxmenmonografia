@@ -9,6 +9,12 @@ class Monografia extends Model
 {
     use HasFactory;
 
+    protected $fillable =
+    [
+        'titulo',
+        'anyo',
+    ];
+
     /**
      * The articulos the Monografia
      *

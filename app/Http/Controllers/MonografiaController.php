@@ -15,9 +15,9 @@ class MonografiaController extends Controller
      */
     public function index()
     {
-        //
+        $monografias = Monografia::all();
+        return view('monografias.index', ['monografias' => $monografias]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +25,11 @@ class MonografiaController extends Controller
      */
     public function create()
     {
-        //
+        $monografia = new Monografia();
+
+
+
+        return view('monografias.create', ['monografia' => $monografia]);
     }
 
     /**
@@ -36,7 +40,14 @@ class MonografiaController extends Controller
      */
     public function store(StoreMonografiaRequest $request)
     {
-        //
+        $validados = $request->validated();
+
+        $monografia = new Monografia($validados);
+
+
+        $monografia->save();
+
+        return redirect()->route('monografias.index')->with('success',"La monografia $monografia->titulo se ha creado correctamente");
     }
 
     /**
@@ -47,7 +58,9 @@ class MonografiaController extends Controller
      */
     public function show(Monografia $monografia)
     {
-        //
+        //return 'show'.$monografia;
+
+        return view('monografias.show',['monografia'=>$monografia]);
     }
 
     /**
