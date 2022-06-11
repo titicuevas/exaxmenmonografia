@@ -10,6 +10,13 @@ class Articulo extends Model
     use HasFactory;
 
 
+    protected $table = 'articulos';
+
+    protected $fillable=
+    ['titulo',
+    'anyo',
+    'num_paginas',];
+
     public function monografias()
     {
         return $this->belongsToMany(Monografia::class);

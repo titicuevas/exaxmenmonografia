@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\AutorController;
 use App\Http\Controllers\MonografiaController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,19 +58,22 @@ Route::put('/monografias/{monografia}', [MonografiaController::class,'update'])
 Route::delete('/monografias/{monografia}', [MonografiaController::class,'destroy'])
 ->name('monografias.destroy');
 
-
+Route::resource('articulos',ArticuloController::class);
+//Route::resource('articulos',ArticuloController::class);
 //1 - crea una ruta get /articulos que muestre todas las articulos
 
-
+//Route::get('/articulos', ArticuloController::class,'index')->name('articulos.index');
+Route::get('/articulos', [ArticuloController::class,'index'])->name('articulos.index');
 
 //crea una ruta get /articulos/create que vaya a un formulario para crear una nueva monografia
 
-
+Route::get('/articulos/create',[ArticuloController::class,'create'])->name('articulos.create');
 // crea una ruta post /articulos que guarde la nueva monografia
 
 
-//crea la ruta get /articulos/{articulo} que muestre la monografia
 
+//crea la ruta get /articulos/{articulo} que muestre la monografia
+Route::get('/articulos/{articulo}',[ArticuloController::class,'show'])->name('articulos.show');
 
 
 //crea la ruta get /articulos/{articulo}/edit que lleve a un formulario
@@ -82,8 +87,12 @@ Route::delete('/monografias/{monografia}', [MonografiaController::class,'destroy
 
 
 
-
-
+/* Este es el resourse de autores que nesesita modificar los parametros
+ (ya que el singular de autores es autore), pero todo lo demas es igual
+ --en el modelo tambien nesesita llamar correctamente a la tabla ya que ek modelo
+ es Autor y la tabla autores (protedted $table = 'autores' )
+  */
+Route::resource('autores',AutorController::class)->parameters(['autores'=>'autor']);
 
 
 

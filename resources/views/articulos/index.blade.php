@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Monografias') }}
+            {{ __('Articulos') }}
         </h2>
     </x-slot>
 
@@ -31,11 +31,11 @@
 
                             <td>Id</td>
 
-                            <td>Nombre</td>
+                            <td>Titulo</td>
 
-                            <td>año</td>
+                            <td>Año</td>
 
-                            <td>mostrar</td>
+                            <td>NºPaginas</td>
 
                             <td>Editar</td>
 
@@ -45,31 +45,34 @@
 
 
                         </tr>
-                        @foreach ($monografias as $monografia)
+                        @foreach ($articulos as $articulo)
                             <tr>
 
-                                <td>{{ $monografia->id }}</td>
+                                <td>{{ $articulo->id }}</td>
 
-                                <td>{{ $monografia->titulo }}</td>
+                                <td>{{ $articulo->titulo }}</td>
 
-                                <td>{{ $monografia->anyo }}</td>
+                                <td>{{ $articulo->anyo }}</td>
+
+                                <td>{{ $articulo->num_paginas }}</td>
+
 
 
 
                                 <td>
-                                    <a href="{{ route('monografias.show', $monografia) }}">Mostrar</a>
+                                    <a href="{{ route('articulos.show', $articulo) }}">Mostrar</a>
                                 </td>
 
 
                                 <td>
-                                    <a href="{{ route('monografias.edit', $monografia) }}">Edit</a>
+                                    <a href="{{ route('articulos.edit', $articulo) }}">Edit</a>
                                 </td>
                                 <td>
 
-                                    <form action="{{ route('monografias.destroy', $monografia) }}" method="POST">
+                                    <form action="{{ route('articulos.destroy', $articulo) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button onclick="return confirm('¿Seguro que desea borrar la monografia?')"
+                                        <button onclick="return confirm('¿Seguro que desea borrar la articulo?')"
                                             class="px-4 py-1 text-sm text-white bg-red-400 rounded"
                                             type="submit">Borrar</button>
                                     </form>
@@ -83,7 +86,7 @@
 
                     </table>
                     <br>
-                    <a href="{{ route('monografias.create') }}">Crear monografia</a>
+                    <a href="{{ route('articulos.create') }}">Crear articulo</a>
 
 
 

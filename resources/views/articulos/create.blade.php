@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Monografias') }}
+            {{ __('Articulos') }}
         </h2>
     </x-slot>
 
@@ -11,10 +11,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
+                    articulos
+                    articulo
 
                     Vamos aprobar
 
-                    <form action="{{ route('monografias.store', [], false) }}" method="post">
+                    <form action="{{ route('articulos.store', [], false) }}" method="post">
                         @csrf
                         @method('POST')
 
@@ -31,6 +33,16 @@
                         <input type="year" name="anyo" placeholder="Introduzca el año "
                         value="{{ old('anyo') }}">
                         @error('anyo')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+
+                    <br>
+                        <label for="num_paginas">Numero de Paginas</label>
+                        <input type="number" name="num_paginas" placeholder="Introduzca el numero de paginas "
+                        value="{{ old('num_paginas') }}">
+                        @error('num_paginas')
                         <p class="text-red-500 text-sm mt-1">
                             {{ $message }}
                         </p>

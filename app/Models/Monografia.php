@@ -9,6 +9,8 @@ class Monografia extends Model
 {
     use HasFactory;
 
+    protected $table = 'monografias';
+    
     protected $fillable =
     [
         'titulo',
