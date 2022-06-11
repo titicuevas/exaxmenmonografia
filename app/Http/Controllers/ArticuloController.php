@@ -15,9 +15,9 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        $articulos= Articulo::all();
-//return $articulos;
-        return view('articulos.index',['articulos'=>$articulos]);
+        $articulos = Articulo::all();
+        //return $articulos;
+        return view('articulos.index', ['articulos' => $articulos]);
     }
 
     /**
@@ -27,9 +27,8 @@ class ArticuloController extends Controller
      */
     public function create()
     {
-        $articulo= new Articulo();
-        return view('articulos.create',['articulo'=>$articulo]);
-
+        $articulo = new Articulo();
+        return view('articulos.create', ['articulo' => $articulo]);
     }
 
     /**
@@ -41,8 +40,8 @@ class ArticuloController extends Controller
     public function store(StoreArticuloRequest $request)
     {
         $articulo = new Articulo($request->validated());
-        $articulo -> save();
-        return redirect(route('articulos.index'))->with('success',"El $articulo->titulo se ha creado correctamente" );
+        $articulo->save();
+        return redirect(route('articulos.index'))->with('success', "El $articulo->titulo se ha creado correctamente");
     }
 
     /**
@@ -53,7 +52,7 @@ class ArticuloController extends Controller
      */
     public function show(Articulo $articulo)
     {
-        return view('articulos.show',['articulo'=>$articulo]);
+        return view('articulos.show', ['articulo' => $articulo]);
     }
 
     /**
@@ -64,7 +63,7 @@ class ArticuloController extends Controller
      */
     public function edit(Articulo $articulo)
     {
-        //
+        return view('articulos.edit', ['articulo' => $articulo]);
     }
 
     /**
@@ -76,7 +75,12 @@ class ArticuloController extends Controller
      */
     public function update(UpdateArticuloRequest $request, Articulo $articulo)
     {
-        //
+
+        $articulo->fill($request->validated());
+
+        $articulo->save();
+
+        return redirect(route('articulos.index'))->with('success', "El $articulo->titulo se ha modificado correctamente");
     }
 
     /**
@@ -87,6 +91,8 @@ class ArticuloController extends Controller
      */
     public function destroy(Articulo $articulo)
     {
-        //
+        $articulo -> delete();
+
+        return redirect(route('articulos.index'))->with('success',"El $articulo->titulo se ha eliminado");
     }
 }

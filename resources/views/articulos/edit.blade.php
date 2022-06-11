@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Monografias') }}
+            {{ __('Articulo') }}
         </h2>
     </x-slot>
 
@@ -13,13 +13,13 @@
 
                     Vamos aprobar
 
-                    <form action="{{ route('monografias.update', $monografia, false) }}" method="post">
+                    <form action="{{ route('articulos.update', $articulo, false) }}" method="post">
                         @csrf
                         @method('PUT')
 
                         <label for="titulo">Titulo</label>
                         <input type="text" name="titulo" placeholder="Introduzca titulo"
-                        value="{{ old('titulo', $monografia->titulo) }}">
+                        value="{{ old('titulo', $articulo->titulo) }}">
                         @error('titulo')
                             <p class="text-red-500 text-sm mt-1">
                                 {{ $message }}
@@ -28,12 +28,23 @@
                         <br>
                         <label for="anyo">Año</label>
                         <input type="year" name="anyo" placeholder="Introduzca el año "
-                        value="{{ old('anyo', $monografia->anyo) }}">
+                        value="{{ old('anyo', $articulo->anyo) }}">
                         @error('anyo')
                         <p class="text-red-500 text-sm mt-1">
                             {{ $message }}
                         </p>
                     @enderror
+
+                    <br>
+                    <label for="num_paginas">Año</label>
+                    <input type="number" name="num_paginas" placeholder="Introduzca el año "
+                    value="{{ old('num_paginas', $articulo->num_paginas) }}">
+                    @error('num_paginas')
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ $message }}
+                    </p>
+                @enderror
+
                         <br>
                         <button type="submit">Enviar</button>
                         @error('titulo')

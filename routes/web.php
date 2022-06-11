@@ -58,7 +58,7 @@ Route::put('/monografias/{monografia}', [MonografiaController::class,'update'])
 Route::delete('/monografias/{monografia}', [MonografiaController::class,'destroy'])
 ->name('monografias.destroy');
 
-Route::resource('articulos',ArticuloController::class);
+//Route::resource('articulos',ArticuloController::class);
 //Route::resource('articulos',ArticuloController::class);
 //1 - crea una ruta get /articulos que muestre todas las articulos
 
@@ -70,6 +70,7 @@ Route::get('/articulos', [ArticuloController::class,'index'])->name('articulos.i
 Route::get('/articulos/create',[ArticuloController::class,'create'])->name('articulos.create');
 // crea una ruta post /articulos que guarde la nueva monografia
 
+Route::post('/articulos', [ArticuloController::class,'store'])->name('articulos.store');
 
 
 //crea la ruta get /articulos/{articulo} que muestre la monografia
@@ -78,13 +79,13 @@ Route::get('/articulos/{articulo}',[ArticuloController::class,'show'])->name('ar
 
 //crea la ruta get /articulos/{articulo}/edit que lleve a un formulario
 
-
+Route::get('/articulos/{articulo}/edit',[ArticuloController::class,'edit'])->name('articulos.edit');
 //crtea ruta tipo put /articulos/{articulo} que guarde la mopnografia modificada (update)
 
-
+Route::put('/articulos/{articulo}',[ArticuloController::class,'update'])->name('articulos.update');
 
 //  crea la ruta tipo delete /articulos/{articulo} que borre la monografia
-
+Route::delete('/articulo/{articulo}',[ArticuloController::class,'destroy'])->name('articulos.destroy');
 
 
 /* Este es el resourse de autores que nesesita modificar los parametros
