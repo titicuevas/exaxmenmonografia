@@ -24,7 +24,9 @@ class UpdateMonografiaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titulo'=>'required|string',
+            'anyo'=>'required|integer|min:4',
+
         ];
     }
 }

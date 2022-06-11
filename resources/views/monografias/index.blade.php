@@ -36,7 +36,7 @@
 
                             <td>año</td>
 
-                           <td>mostrar</td>
+                            <td>mostrar</td>
 
                             <td>Editar</td>
 
@@ -55,11 +55,26 @@
 
                                 <td>{{ $monografia->anyo }}</td>
 
+
+
                                 <td>
-                                    <a href="{{route ('monografias.show',$monografia)}}">Mostrar</a>
+                                    <a href="{{ route('monografias.show', $monografia) }}">Mostrar</a>
                                 </td>
 
 
+                                <td>
+                                    <a href="{{ route('monografias.edit', $monografia) }}">Edit</a>
+                                </td>
+                                <td>
+                                    
+                                    <form action="{{ route('monografias.destroy', $monografia) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return confirm('¿Seguro que desea borrar la monografia?')"
+                                            class="px-4 py-1 text-sm text-white bg-red-400 rounded"
+                                            type="submit">Borrar</button>
+                                    </form>
+                                </td>
 
 
 

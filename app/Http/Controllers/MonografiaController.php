@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMonografiaRequest;
 use App\Http\Requests\UpdateMonografiaRequest;
 use App\Models\Monografia;
+use Illuminate\Auth\Events\Validated;
 
 class MonografiaController extends Controller
 {
@@ -71,7 +72,8 @@ class MonografiaController extends Controller
      */
     public function edit(Monografia $monografia)
     {
-        //
+
+        return view('monografias.edit', ['monografia' => $monografia]);
     }
 
     /**
@@ -83,7 +85,11 @@ class MonografiaController extends Controller
      */
     public function update(UpdateMonografiaRequest $request, Monografia $monografia)
     {
-        //
+
+       // dd($request -> Validated());
+        $monografia->fill ($request -> Validated());
+        $monografia -> save();
+        return redirect()->route('monografias.index')->with('success',"La monografia $monografia->titulo se ha actualizado correctamente");
     }
 
     /**
@@ -94,6 +100,10 @@ class MonografiaController extends Controller
      */
     public function destroy(Monografia $monografia)
     {
-        //
+
+       
+        $monografia -> delete();
+
+        return redirect()->route('monografias.index')->with('success',"La $monografia->titulo ha sido eliminada correctamente");
     }
 }

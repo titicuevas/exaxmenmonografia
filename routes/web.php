@@ -36,16 +36,56 @@ Route::post('/monografias/', [MonografiaController::class,'store'])->name('monog
 
 //crea la ruta get /monografias/{monografia} que muestre la monografia
 
-Route::get('/monografias/{monografia}', [MonografiaController::class,'show'])->name('monografias.show');
+Route::get('/monografias/{monografia}', [MonografiaController::class,'show'])
+->name('monografias.show');
 
 
 //crea la ruta get /monografias/{monografia}/edit que lleve a un formulario
 
+Route::get('/monografias/{monografia}/edit', [MonografiaController::class,'edit'])
+    ->name('monografias.edit');
 
 //crtea ruta tipo put /monografias/{monografias} que guarde la mopnografia modificada (update)
 
+Route::put('/monografias/{monografia}', [MonografiaController::class,'update'])
+->name('monografias.update');
+
 
 //  crea la ruta tipo delete /monografias/{monografia} que borre la monografia
+
+Route::delete('/monografias/{monografia}', [MonografiaController::class,'destroy'])
+->name('monografias.destroy');
+
+
+//1 - crea una ruta get /articulos que muestre todas las articulos
+
+
+
+//crea una ruta get /articulos/create que vaya a un formulario para crear una nueva monografia
+
+
+// crea una ruta post /articulos que guarde la nueva monografia
+
+
+//crea la ruta get /articulos/{articulo} que muestre la monografia
+
+
+
+//crea la ruta get /articulos/{articulo}/edit que lleve a un formulario
+
+
+//crtea ruta tipo put /articulos/{articulo} que guarde la mopnografia modificada (update)
+
+
+
+//  crea la ruta tipo delete /articulos/{articulo} que borre la monografia
+
+
+
+
+
+
+
 
 
 require __DIR__.'/auth.php';

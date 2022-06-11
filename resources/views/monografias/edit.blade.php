@@ -1,6 +1,4 @@
-{{ $monografia }}
-
-<x-app-layout>
+v<x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Monografias') }}
@@ -15,13 +13,13 @@
 
                     Vamos aprobar
 
-                    <form action="{{ route('monografias.store', [], false) }}" method="post">
+                    <form action="{{ route('monografias.update', $monografia, false) }}" method="post">
                         @csrf
-                        @method('POST')
+                        @method('PUT')
 
                         <label for="titulo">Titulo</label>
                         <input type="text" name="titulo" placeholder="Introduzca titulo"
-                        value="{{ old('titulo') }}">
+                        value="{{ old('titulo', $monografia->titulo) }}">
                         @error('titulo')
                             <p class="text-red-500 text-sm mt-1">
                                 {{ $message }}
@@ -30,7 +28,7 @@
                         <br>
                         <label for="anyo">Año</label>
                         <input type="year" name="anyo" placeholder="Introduzca el año "
-                        value="{{ old('anyo') }}">
+                        value="{{ old('anyo', $monografia->anyo) }}">
                         @error('anyo')
                         <p class="text-red-500 text-sm mt-1">
                             {{ $message }}
