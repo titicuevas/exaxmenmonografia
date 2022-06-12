@@ -61,6 +61,8 @@ class MonografiaController extends Controller
     {
         //return 'show'.$monografia;
 
+        //return $monografia->articulos;
+
         return view('monografias.show',['monografia'=>$monografia]);
     }
 
@@ -101,7 +103,7 @@ class MonografiaController extends Controller
     public function destroy(Monografia $monografia)
     {
 
-       
+
         $monografia -> delete();
 
         return redirect()->route('monografias.index')->with('success',"La $monografia->titulo ha sido eliminada correctamente");
