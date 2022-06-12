@@ -26,6 +26,7 @@ class UpdateMonografiaRequest extends FormRequest
         return [
             'titulo'=>'required|string',
             'anyo'=>'required|integer|min:4',
+            'nombre'=>'required|string',
 
         ];
     }

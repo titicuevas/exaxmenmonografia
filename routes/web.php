@@ -53,10 +53,17 @@ Route::put('/monografias/{monografia}', [MonografiaController::class,'update'])
 ->name('monografias.update');
 
 
+//Mostrar por get monografias/{monografia}/autores muestra el titulo
+
+Route::get('/monografias/{monografia}/autores', [MonografiaController::class,'autores'])
+    ->name('monografias.autores');
+
 //  crea la ruta tipo delete /monografias/{monografia} que borre la monografia
 
 Route::delete('/monografias/{monografia}', [MonografiaController::class,'destroy'])
 ->name('monografias.destroy');
+
+
 
 //Route::resource('articulos',ArticuloController::class);
 //Route::resource('articulos',ArticuloController::class);
@@ -97,7 +104,7 @@ Route::delete('/articulo/{articulo}',[ArticuloController::class,'destroy'])->nam
 
 
 
-  
+
 Route::resource('autores',AutorController::class)->parameters(['autores'=>'autor']);
 
 

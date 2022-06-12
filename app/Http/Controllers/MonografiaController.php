@@ -108,4 +108,7 @@ class MonografiaController extends Controller
 
         return redirect()->route('monografias.index')->with('success',"La $monografia->titulo ha sido eliminada correctamente");
     }
+
+
+    
 }

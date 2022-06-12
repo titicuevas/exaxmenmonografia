@@ -25,11 +25,29 @@
                     Vamos aprobar
                     <br>
 
-                    {{$articulo->titulo}}
+                    {{ $articulo->titulo }}
                     <br>
-                    {{$articulo->anyo}}
+                    {{ $articulo->anyo }}
                     <br>
-                    {{$articulo->num_paginas}}
+                    {{ $articulo->num_paginas }}
+                    <br>
+
+
+                    Autores
+                    <br>
+
+                    {{ $articulo->autores->count() }}
+
+
+                    <br>
+                    Monografias
+                    <br>
+                    {{ $articulo->monografias->count() }}
+
+
+
+
+                    <br>
                 </div>
             </div>
         </div>

@@ -57,6 +57,10 @@
                                 <td>{{ $articulo->num_paginas }}</td>
 
 
+                                
+
+
+
 
 
                                 <td>

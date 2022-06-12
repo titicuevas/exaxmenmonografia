@@ -27,32 +27,8 @@
 
                     {{ $monografia->titulo }}
                     <br>
-                    {{ $monografia->anyo }}
-<br>
-
-                        Articulos
-
-                    @foreach ($monografia->articulos as $articulo)
 
 
-                    <br>
-                        {{ $articulo->titulo }}
-
-                        {{ $articulo->num_paginas }}
-                    @endforeach
-<br>
-                        numero de articulos
-                     {{$monografia->articulos->count()}}
-                        <br>
-
-                    paginas totales  de la monografia
-
-                    <br>
-                        {{$monografia->articulos->sum('num_paginas')}}
-
-
-<br>
-                        Autores
 
 
                 </div>
