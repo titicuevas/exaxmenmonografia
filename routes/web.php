@@ -93,6 +93,11 @@ Route::delete('/articulo/{articulo}',[ArticuloController::class,'destroy'])->nam
  --en el modelo tambien nesesita llamar correctamente a la tabla ya que ek modelo
  es Autor y la tabla autores (protedted $table = 'autores' )
   */
+
+
+
+
+  
 Route::resource('autores',AutorController::class)->parameters(['autores'=>'autor']);
 
 

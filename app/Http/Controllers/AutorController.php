@@ -15,7 +15,10 @@ class AutorController extends Controller
      */
     public function index()
     {
-        //
+        $autores = Autor::all();
+        return view('autores.index',['autores'=> $autores]);
+
+
     }
 
     /**
@@ -25,7 +28,9 @@ class AutorController extends Controller
      */
     public function create()
     {
-        //
+        $autor= new Autor();
+
+        return view ('autores.create',['autor'=>$autor]);
     }
 
     /**
@@ -36,7 +41,10 @@ class AutorController extends Controller
      */
     public function store(StoreAutorRequest $request)
     {
-        //
+        $autor = new Autor($request->validated());
+        $autor->save();
+
+        return redirect(route('autores.index'))->with('success',"El $autor->nombre se ha creado correctamente");
     }
 
     /**
@@ -47,7 +55,7 @@ class AutorController extends Controller
      */
     public function show(Autor $autor)
     {
-        //
+        return view ('autores.show',['autor'=>$autor]);
     }
 
     /**
@@ -58,7 +66,7 @@ class AutorController extends Controller
      */
     public function edit(Autor $autor)
     {
-        //
+        return view ('autores.edit',['autor'=>$autor]);
     }
 
     /**
@@ -70,7 +78,11 @@ class AutorController extends Controller
      */
     public function update(UpdateAutorRequest $request, Autor $autor)
     {
-        //
+        $autor->fill($request->validated());
+
+        $autor->save();
+
+        return redirect(route('autores.index'))->with('success',"El $autor->nombre se ha modificado correctamente");
     }
 
     /**
@@ -81,6 +93,8 @@ class AutorController extends Controller
      */
     public function destroy(Autor $autor)
     {
-        //
+        $autor ->delete();
+
+        return redirect(route('autores.index'))->with('success',"El $autor->nombre ha sido borrado");
     }
 }

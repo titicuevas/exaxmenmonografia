@@ -24,9 +24,7 @@ class UpdateAutorRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo'=>'required|string',
-            'anyo'=>'required|integer|min:4',
-            'num_paginas'=>'required|integer',
+            'nombre'=>'required|string',
         ];
     }
 }

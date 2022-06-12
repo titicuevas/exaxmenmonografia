@@ -9,11 +9,20 @@ class Autor extends Model
 {
     use HasFactory;
 
+ protected $table='autores';
+
+ protected $fillable =
+    [
+        'nombre',
+
+    ];
+
+
 
     public function articulos()
     {
         return $this->belongsToMany(Articulo::class);
     }
 
-    
+
 }
