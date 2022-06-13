@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Monografias') }}
+            {{ __('Articulos') }}
         </h2>
     </x-slot>
 
@@ -23,18 +23,40 @@
                     @endif
 
                     Vamos aprobar
+
+                    <br>
+                    el número de autores que tiene
+cada artículo
+<br>
+                        @foreach ($articulos as $articulo)
+
+                        El articulo {{$articulo->titulo}} tiene
+                        {{$articulo->autores->count()}} articulos
+                        <br>
+
+                        @endforeach
+
                     <br>
 
-                    monografia :{{ $monografia->titulo }}
+                    el número de monografías en las que aparece cada artículo
                     <br>
+                    @foreach ($articulos as $articulo)
+                    El articulo {{$articulo->titulo}} esta en {{$articulo->monografias->count()}}
+                    monografias
                     <br>
-                    todos los autores que han participado en esa monografía
-                    <br>
-                    @foreach ($monografia->articulos as $articulo)
-                        @foreach ( $articulo->autores as $autor)
-                            {{ $autor->nombre }}
-                        @endforeach
+
+
+
+
+
                     @endforeach
+
+
+
+
+
+
+
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMonografiaRequest;
 use App\Http\Requests\UpdateMonografiaRequest;
+use App\Models\Articulo;
 use App\Models\Monografia;
 use Illuminate\Auth\Events\Validated;
 
@@ -48,7 +49,7 @@ class MonografiaController extends Controller
 
         $monografia->save();
 
-        return redirect()->route('monografias.index')->with('success',"La monografia $monografia->titulo se ha creado correctamente");
+        return redirect()->route('monografias.index')->with('success', "La monografia $monografia->titulo se ha creado correctamente");
     }
 
     /**
@@ -63,7 +64,7 @@ class MonografiaController extends Controller
 
         //return $monografia->articulos;
 
-        return view('monografias.show',['monografia'=>$monografia]);
+        return view('monografias.show', ['monografia' => $monografia]);
     }
 
     /**
@@ -88,10 +89,10 @@ class MonografiaController extends Controller
     public function update(UpdateMonografiaRequest $request, Monografia $monografia)
     {
 
-       // dd($request -> Validated());
-        $monografia->fill ($request -> Validated());
-        $monografia -> save();
-        return redirect()->route('monografias.index')->with('success',"La monografia $monografia->titulo se ha actualizado correctamente");
+        // dd($request -> Validated());
+        $monografia->fill($request->Validated());
+        $monografia->save();
+        return redirect()->route('monografias.index')->with('success', "La monografia $monografia->titulo se ha actualizado correctamente");
     }
 
     /**
@@ -104,11 +105,36 @@ class MonografiaController extends Controller
     {
 
 
-        $monografia -> delete();
+        $monografia->delete();
 
-        return redirect()->route('monografias.index')->with('success',"La $monografia->titulo ha sido eliminada correctamente");
+        return redirect()->route('monografias.index')->with('success', "La $monografia->titulo ha sido eliminada correctamente");
+    }
+
+    public function autores(Monografia $monografia)
+    {
+
+
+
+
+
+       /*  foreach ($monografia->articulos as $articulos) {
+            dump('articulo'.$articulos->titulo);
+            foreach ($articulos->autores as $autor) {
+
+            dump('autor'.$autor->nombre);
+        }
+    } */
+
+
+        return view('monografias.autores', ['monografia' => $monografia,]);
     }
 
 
-    
+    public function articulos()
+    {
+        $articulos = Articulo::all();
+
+
+        return view('monografias.articulos', ['articulos' => $articulos]);
+    }
 }

@@ -70,7 +70,7 @@ Route::delete('/monografias/{monografia}', [MonografiaController::class,'destroy
 //1 - crea una ruta get /articulos que muestre todas las articulos
 
 //Route::get('/articulos', ArticuloController::class,'index')->name('articulos.index');
-Route::get('/articulos', [ArticuloController::class,'index'])->name('articulos.index');
+//Route::get('/articulos', [ArticuloController::class,'index'])->name('articulos.index');
 
 //crea una ruta get /articulos/create que vaya a un formulario para crear una nueva monografia
 
@@ -108,7 +108,8 @@ Route::delete('/articulo/{articulo}',[ArticuloController::class,'destroy'])->nam
 Route::resource('autores',AutorController::class)->parameters(['autores'=>'autor']);
 
 
-
+Route::get('/articulos',[MonografiaController::class,'articulos'])->name('articulos.articulos');
 
 require __DIR__.'/auth.php';
+
 
